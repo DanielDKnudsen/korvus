@@ -23,7 +23,10 @@ async def main():
         {
             "text": {
                 "splitter": {"model": "recursive_character"},
-                "semantic_search": {"model": "Alibaba-NLP/gte-base-en-v1.5"},
+                "semantic_search": {
+                    "model": "Alibaba-NLP/gte-base-en-v1.5",
+                    "parameters": {"trust_remote_code": True},
+                },
             }
         },
     )
@@ -81,7 +84,7 @@ async def main():
     # Using OpenSource LLMs for Chat Completion
     client = OpenSourceAI()
     chat_completion_model = "meta-llama/Meta-Llama-3-8B-Instruct"
-    console.print("Generating response using %s LLM..."%chat_completion_model)
+    console.print("Generating response using %s LLM..." % chat_completion_model)
     response = client.chat_completions_create(
         model=chat_completion_model,
         messages=messages,
@@ -89,7 +92,7 @@ async def main():
         max_tokens=256,
     )
     output = response["choices"][0]["message"]["content"]
-    console.print("Answer: %s"%output)
+    console.print("Answer: %s" % output)
     # Archive collection
     await collection.archive()
 

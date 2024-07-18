@@ -21,6 +21,7 @@ async def main():
                 "splitter": {"model": "recursive_character"},
                 "semantic_search": {
                     "model": "Alibaba-NLP/gte-base-en-v1.5",
+                    "parameters": {"trust_remote_code": True},
                 },
             }
         },

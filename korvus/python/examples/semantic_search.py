@@ -19,12 +19,15 @@ async def main():
         {
             "text": {
                 "splitter": {"model": "recursive_character"},
-                "semantic_search": {"model": "Alibaba-NLP/gte-base-en-v1.5"},
+                "semantic_search": {
+                    "model": "Alibaba-NLP/gte-base-en-v1.5",
+                    "parameters": {"trust_remote_code": True},
+                },
             }
         },
     )
     await collection.add_pipeline(pipeline)
- 
+
     # Prep documents for upserting
     dataset = load_dataset("quora", split="train")
     questions = []

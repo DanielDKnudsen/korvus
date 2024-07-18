@@ -22,7 +22,10 @@ async def main():
             "text": {
                 "splitter": {"model": "recursive_character"},
                 # A SentenceTransformer model trained specifically for embedding tabular data for retrieval
-                "semantic_search": {"model": "deepset/all-mpnet-base-v2-table"},
+                "semantic_search": {
+                    "model": "deepset/all-mpnet-base-v2-table",
+                    "parameters": {"trust_remote_code": True},
+                },
             }
         },
     )
